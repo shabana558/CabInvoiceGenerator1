@@ -25,14 +25,15 @@ namespace CabInvoiceGenerator1TestProject
         [TestCategory("Fare")]
         public void GivenMultipleRidesShouldReturnAggregateTotalFare()
         {
-            double expected = 60;
+           // double expected = 60;
             Ride[] rides = { new Ride(2.0, 5), new Ride(0.1, 1) };
             InvoiceGenerator invoiceGenerator = new InvoiceGenerator(RideType.PREMIUM);
-            //Invoice Summary expected=new InvoiceSummary(rides.Length,60);
+
+            InvoiceSummary expected=new InvoiceSummary(rides.Length,30);
             //Generating Summary for rides
-            double actual = invoiceGenerator.CalculateFare(rides);
+            InvoiceSummary actual = invoiceGenerator.CalculateFare(rides);
             Assert.AreEqual(actual, expected);
             //expected.Equals(actual);
-        }
+        }    
     }
 }
