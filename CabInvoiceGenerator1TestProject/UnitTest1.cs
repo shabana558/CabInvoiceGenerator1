@@ -20,6 +20,19 @@ namespace CabInvoiceGenerator1TestProject
             double actual = invoiceGenerator.CalculateFare(distance, time);
             //Assert
             Assert.AreEqual(expected, actual);
-        }     
+        }
+        [TestMethod]
+        [TestCategory("Fare")]
+        public void GivenMultipleRidesShouldReturnAggregateTotalFare()
+        {
+            double expected = 60;
+            Ride[] rides = { new Ride(2.0, 5), new Ride(0.1, 1) };
+            InvoiceGenerator invoiceGenerator = new InvoiceGenerator(RideType.PREMIUM);
+            //Invoice Summary expected=new InvoiceSummary(rides.Length,60);
+            //Generating Summary for rides
+            double actual = invoiceGenerator.CalculateFare(rides);
+            Assert.AreEqual(actual, expected);
+            //expected.Equals(actual);
+        }
     }
 }
